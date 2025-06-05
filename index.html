@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Interaktif TMD</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> </head>
+<body>
+    <div class="container">
+        <h1>Simulasi Interaktif dan Optimasi TMD</h1>
+
+        <div class="controls-container">
+            <h2>Parameter Kontrol</h2>
+            <div class="control-group">
+                <h3>Parameter TMD</h3>
+                <label for="tmd_mass">Massa TMD (m<sub>d</sub>) (kg): <span id="tmd_mass_value">100</span></label>
+                <input type="range" id="tmd_mass" min="10" max="5000" value="1000" step="10">
+
+                <label for="tmd_stiffness">Kekakuan TMD (k<sub>d</sub>) (N/m): <span id="tmd_stiffness_value">20000</span></label>
+                <input type="range" id="tmd_stiffness" min="1000" max="500000" value="100000" step="1000">
+
+                <label for="tmd_damping">Redaman TMD (c<sub>d</sub>) (Ns/m): <span id="tmd_damping_value">200</span></label>
+                <input type="range" id="tmd_damping" min="10" max="20000" value="1000" step="10">
+                
+                <input type="checkbox" id="use_tmd_checkbox" checked>
+                <label for="use_tmd_checkbox">Gunakan TMD</label>
+            </div>
+            
+            <div class="control-group">
+                 <h3>Aksi</h3>
+                <button id="run_simulation_button">Jalankan Simulasi Manual</button>
+                <button id="load_optimal_button">Muat Parameter TMD Optimal (dari Python)</button>
+            </div>
+        </div>
+
+        <div class="visualization-container">
+            <h2>Visualisasi Hasil Simulasi</h2>
+            <div class="animation-area">
+                <h3>Animasi Gedung (Representasi Sederhana)</h3>
+                <canvas id="building_animation_canvas" width="300" height="450"></canvas>
+            </div>
+            <div class="plot-area">
+                <h3>Plot Respons Perpindahan Lantai Atas</h3>
+                <canvas id="displacement_plot_canvas"></canvas>
+            </div>
+        </div>
+         <div id="status_message" class="status">Menunggu aksi...</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
